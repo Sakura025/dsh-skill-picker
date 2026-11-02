@@ -1,0 +1,28 @@
+{
+  "name": "dsh-skill-picker",
+  "description": "Skill picker and in-app installer for the DeepSeek Harness composer — browse by lifecycle phase, search in Chinese or English, insert as /name, install from repo/URL/paste/registry.",
+  "topics": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "agent-skills",
+    "skill-picker",
+    "skill-installer",
+    "composer",
+    "ai-agent",
+    "llm-tools",
+    "typescript-free",
+    "i18n",
+    "zh-cn"
+  ],
+  "private": false,
+  "has_issues": true,
+  "has_projects": false,
+  "has_wiki": false,
+  "has_discussions": false,
+  "default_branch": "main",
+  "allow_squash_merge": true,
+  "allow_merge_commit": false,
+  "allow_rebase_merge": true,
+  "delete_branch_on_merge": true
+}

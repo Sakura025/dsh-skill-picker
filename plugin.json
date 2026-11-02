@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dsh-skill-picker",
+  "version": "1.1.0",
+  "description": "Skill picker and in-app installer for the DeepSeek Harness composer.",
+  "author": {
+    "name": "Sakura025",
+    "url": "https://github.com/Sakura025"
+  },
+  "homepage": "https://github.com/Sakura025/dsh-skill-picker",
+  "repository": "https://github.com/Sakura025/dsh-skill-picker",
+  "license": "MIT",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "agent-skill",
+    "skill-picker",
+    "skill-installer"
+  ]
+}

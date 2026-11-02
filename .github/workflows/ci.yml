@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install test dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Syntax
+        run: |
+          node --check client.js
+          node --check index.js
+
+      - name: Dictionary and catalog audit
+        run: node audit.mjs
+
+      - name: Client dialog
+        run: node verify.mjs
+
+      - name: Host routes
+        run: node verify-host.mjs
+
+      - name: Skill manifests
+        run: node verify-skills.mjs
+
+      - name: Empty-panel regression
+        run: node regression.mjs
+
+  provider:
+    name: host provider (needs a DSH install)
+    runs-on: ubuntu-latest
+    # verify-provider.mjs and verify-roundtrip.mjs import the real
+    # @deepseek-ai packages from a local DSH installation, which a clean runner
+    # does not have. They run on a maintainer machine before release; this job
+    # documents that gap instead of faking a pass.
+    if: ${{ false }}
+    steps:
+      - run: echo "Run node verify-provider.mjs and node verify-roundtrip.mjs locally."

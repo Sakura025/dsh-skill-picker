@@ -1,0 +1,40 @@
+name: Feature request
+description: Suggest a capability or an improvement
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: 中文提交完全可以。 Describe the workflow you are stuck in, not only the button you want.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The task, not the implementation. What do you do today instead?
+      placeholder: I install a skill from a private repo and have to keep the token in a shell variable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help
+      placeholder: Let the Add tab read a token from a field, stored per profile.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Picker layout and navigation
+        - Search and filtering
+        - Insertion into the composer
+        - Adding skills (repo, URL, paste, registry)
+        - Installed skills and removal
+        - Localization
+        - Documentation
+        - Other
+    validations:
+      required: true

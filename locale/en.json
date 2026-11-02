@@ -1,21 +1,48 @@
 {
   "meta": {
     "title": "Skill Picker",
-    "description": "Adds a skill button to the message composer that inserts the skills this conversation should use."
+    "description": "Browses the host skill catalog by lifecycle phase, searches in Chinese or English, inserts the picked skills as /name, and installs new ones from a repo, URL, pasted SKILL.md, or the skills.sh registry. / 按开发阶段浏览技能目录，用中文或英文搜索，把选中的技能以 /name 插入输入框，并能在面板内安装新技能。"
   },
   "button": {
     "label": "Skills",
-    "tooltip": "Choose skills for this message"
+    "tooltip": "Browse, search, and install skills"
   },
-  "menu": {
+  "panel": {
     "title": "Skills",
-    "search": "Filter skills",
-    "empty": "No skill matches this filter.",
-    "loading": "Loading skills...",
-    "failed": "Skill catalog unavailable",
-    "userOnly": "user-only",
-    "apply": "Insert",
-    "cancel": "Cancel",
-    "selected": "{count} selected"
+    "close": "Close"
+  },
+  "tab": {
+    "catalog": "This session",
+    "installed": "Installed",
+    "add": "Add skill"
+  },
+  "search": {
+    "placeholder": "Search by title, purpose, or /name",
+    "count": "{count}",
+    "empty": "No matching skill"
+  },
+  "loading": "Loading...",
+  "catalog": {
+    "failed": "Catalog unavailable; showing the built-in list",
+    "fallback": "The host returned no skills; showing the built-in list"
+  },
+  "retry": "Retry",
+  "filter": {
+    "all": "All"
+  },
+  "multi": "Multi",
+  "single": "Single",
+  "insert": "Insert",
+  "cancel": "Cancel",
+  "recent": "Recent",
+  "installed": {
+    "empty": "Nothing installed yet. Use the Add tab.",
+    "root": "Install root",
+    "remove": "Remove"
+  },
+  "add": {
+    "repo": "Repo / URL",
+    "paste": "Paste SKILL.md",
+    "submit": "Install"
   }
 }

@@ -1,0 +1,93 @@
+name: Bug report
+description: Something in the picker does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. The more precise the environment, the faster this is fixable.
+        中文提交完全可以。
+
+  - type: input
+    id: dsh-version
+    attributes:
+      label: DSH version
+      description: Settings → About, or the version in the installer filename.
+      placeholder: 0.2.1-rc.5
+    validations:
+      required: true
+
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      description: From package.json, or the zip filename you installed.
+      placeholder: 1.1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where does it fail?
+      options:
+        - The Skills button does not appear
+        - The panel opens but is empty
+        - Search does not find a skill I know is installed
+        - Inserting a skill does nothing
+        - The Add skill tab fails
+        - Installing from a repo or URL fails
+        - The Installed tab is wrong
+        - Removal fails
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Click Skills
+        2. Type "test"
+        3. Click the first row
+        4. Nothing is inserted
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: DevTools → Console. Paste anything mentioning `skill-picker` or `skills/list`.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I read the Troubleshooting section of the README
+          required: true
+        - label: I restarted DSH completely after editing cordis.patch.yml
+          required: true
