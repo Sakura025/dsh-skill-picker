@@ -85,20 +85,31 @@ if (-not $exists) {
 }
 
 # 3. Push with an in-memory credential helper.
+# Windows PowerShell 5.1 turns native stderr into a terminating error under
+# ErrorActionPreference=Stop, and git legitimately writes progress to stderr.
+# Every call below therefore runs with that preference relaxed and is judged by
+# its exit code instead.
 $remote = "https://github.com/$full.git"
-$prevHelper = (& $git -C $RepoDir config --get credential.helper) 2>$null
+$prevHelper = & $git -C $RepoDir config --get credential.helper 2>$null
 & $git -C $RepoDir config credential.helper '!f() { echo username=x-access-token; echo "password=$GH_PAT"; }; f'
 $env:GH_PAT = $Token
+$pushOk = $false
 try {
-	& $git -C $RepoDir remote remove origin 2>$null | Out-Null
-	& $git -C $RepoDir remote add origin $remote
+	$ErrorActionPreference = 'Continue'
+	$existing = (& $git -C $RepoDir remote) 2>$null
+	if ($existing -contains 'origin') { & $git -C $RepoDir remote remove origin 2>&1 | Out-Null }
+	& $git -C $RepoDir remote add origin $remote 2>&1 | Out-Null
 	& $git -C $RepoDir push -u origin $branch 2>&1 | ForEach-Object { Write-Host $_ }
-	if ($LASTEXITCODE -ne 0) { throw "git push failed with exit code $LASTEXITCODE" }
+	$pushOk = $LASTEXITCODE -eq 0
+	if (-not $pushOk) { throw "git push failed with exit code $LASTEXITCODE" }
 } finally {
-	& $git -C $RepoDir config --unset-all credential.helper 2>$null | Out-Null
-	if ($prevHelper) { & $git -C $RepoDir config credential.helper $prevHelper }
+	$ErrorActionPreference = 'Continue'
+	& $git -C $RepoDir config --unset-all credential.helper 2>&1 | Out-Null
+	if ($prevHelper) { & $git -C $RepoDir config credential.helper $prevHelper 2>&1 | Out-Null }
 	Remove-Item Env:\GH_PAT -ErrorAction SilentlyContinue
+	$ErrorActionPreference = 'Stop'
 }
+if (-not $pushOk) { throw 'push did not complete' }
 
 # 4. Apply repository metadata: description, homepage, topics, merge policy.
 if ($null -ne $metadata) {
