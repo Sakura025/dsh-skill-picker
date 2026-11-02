@@ -2,20 +2,9 @@
   "name": "@local/dsh-skill-picker",
   "version": "1.0.0",
   "private": true,
-  "description": "Skill picker for the DeepSeek Harness composer: browse skills in Chinese, grouped by development phase, and insert them as /name.",
+  "description": "Skill picker for the DeepSeek Harness composer: choose the skills a conversation should use and insert them as /name.",
   "type": "module",
   "main": "./index.js",
-  "license": "MIT",
-  "keywords": [
-    "dsh-plugin",
-    "deepseek-harness",
-    "agent-skill",
-    "skill-picker",
-    "composer"
-  ],
-  "engines": {
-    "node": "^22.19.0 || >=24.0.0"
-  },
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
@@ -31,17 +20,6 @@
     "locale/*.json",
     "icon.svg"
   ],
-  "scripts": {
-    "verify": "node verify.mjs",
-    "regression": "node regression.mjs",
-    "audit": "node audit.mjs",
-    "check": "node --check client.js && node audit.mjs && node verify.mjs && node regression.mjs"
-  },
-  "devDependencies": {
-    "jsdom": "^30.1.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
   "dsh": {
     "bundle": { "patch": "./cordis.patch.yml" },
     "client": {

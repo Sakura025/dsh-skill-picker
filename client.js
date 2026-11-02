@@ -10,72 +10,131 @@ window.__ModuleLoader__.load({
 
 		const zh = {
 			"button.label": "技能",
-			"button.tooltip": "选择本次要用的技能（不用记技能名）",
+			"button.tooltip": "浏览、搜索、安装技能（不用记技能名）",
 			"button.inserted": "已插入",
-			"menu.title": "选择技能",
-			"menu.count": "共 {count} 项",
-			"menu.hint": "输入中文或英文筛选 · ↑↓ 选择 · Enter 插入 · Esc 关闭",
-			"menu.search": "搜索技能，例如：测试 / 评审 / 上线 / review",
-			"menu.empty": "没有匹配的技能",
-			"menu.loading": "正在加载技能…",
-			"menu.failed": "目录接口不可用，以下是内置清单（插入后仍由宿主解析）",
-			"menu.fallback": "宿主没返回技能清单，以下为内置清单（插入后由宿主解析）",
-			"menu.retry": "重试",
-			"menu.multi": "多选",
-			"menu.single": "单选",
-			"menu.apply": "插入",
-			"menu.cancel": "取消",
-			"menu.recent": "最近使用",
-			"menu.group.define": "① 定义需求",
-			"menu.group.plan": "② 规划拆解",
-			"menu.group.build": "③ 写代码",
-			"menu.group.verify": "④ 测试验证",
-			"menu.group.review": "⑤ 评审加固",
-			"menu.group.ship": "⑥ 交付上线",
-			"menu.group.meta": "技能入口",
-			"menu.group.other": "其它",
-			"menu.needPick": "先选至少一个技能",
-			"menu.tip.single": "点击任意技能即插入到输入框",
-			"menu.tip.multi": "已选 {count} 项 · Tab 切回单选",
-			"menu.userOnly": "仅用户"
+			"panel.title": "技能",
+			"panel.close": "关闭",
+			"tab.catalog": "本次可用",
+			"tab.installed": "本地已装",
+			"tab.add": "添加技能",
+			"search.placeholder": "搜索：中文名、说明、/英文名 都行",
+			"search.count": "{count} 个",
+			"search.empty": "没有匹配的技能",
+			"loading": "正在加载…",
+			"catalog.failed": "技能目录接口不可用，以下为内置清单（插入后仍由宿主解析）",
+			"catalog.fallback": "宿主没返回技能清单，以下为内置清单（插入后仍由宿主解析）",
+			"retry": "重试",
+			"multi.on": "多选",
+			"multi.off": "单选",
+			"filter.all": "全部",
+			"filter.count": "{count}",
+			"tip.single": "点击任意一行即插入到输入框",
+			"tip.multi": "已选 {count} 项 · 点插入一次性拼进草稿",
+			"insert": "插入",
+			"cancel": "取消",
+			"recent": "最近使用",
+			"group.define": "① 定义需求",
+			"group.plan": "② 规划拆解",
+			"group.build": "③ 写代码",
+			"group.verify": "④ 测试验证",
+			"group.review": "⑤ 评审加固",
+			"group.ship": "⑥ 交付上线",
+			"group.meta": "技能入口",
+			"group.other": "其它",
+			"needPick": "先选至少一个技能",
+			"userOnly": "仅用户",
+			"installed.empty": "本地还没有安装技能。切到「添加技能」装一个。",
+			"installed.root": "安装目录",
+			"installed.remove": "删除",
+			"installed.confirmRemove": "确认删除「{name}」？",
+			"installed.removed": "已删除 {name}",
+			"add.tab.repo": "仓库 / 地址",
+			"add.tab.paste": "粘贴 SKILL.md",
+			"add.repo.label": "来源：owner/repo、owner/repo/skill，或 raw 地址",
+			"add.repo.placeholder": "addyosmani/agent-skills/skills/code-review-and-quality",
+			"add.name.label": "技能名（可选，须与 frontmatter 一致）",
+			"add.name.placeholder": "code-review-and-quality",
+			"add.overwrite": "允许覆盖同名技能",
+			"add.submit": "安装",
+			"add.installing": "正在安装…",
+			"add.paste.label": "SKILL.md 全文（须含 YAML frontmatter 与 name）",
+			"add.paste.placeholder": "---\nname: my-skill\ndescription: 什么时候用这个技能\n---\n\n正文…",
+			"add.ok": "已安装 {name}",
+			"add.fail": "安装失败",
+			"add.registry": "从 skills.sh 搜索并安装",
+			"add.registry.search": "搜索",
+			"add.registry.placeholder": "搜索公共技能库，例如 review / 测试 / pdf",
+			"add.registry.empty": "公共库里没有匹配项",
+			"add.installs": "{count} 次安装",
+			"add.needSource": "先填来源或粘贴内容",
+			"add.unavailable": "宿主接口不可用：请确认插件已装进 profile 并重启过 DSH"
 		};
 
 		const en = {
 			"button.label": "Skills",
-			"button.tooltip": "Pick skills for this message",
+			"button.tooltip": "Browse, search, install skills",
 			"button.inserted": "Inserted",
-			"menu.title": "Pick skills",
-			"menu.count": "{count} skills",
-			"menu.hint": "Type to filter · ↑↓ move · Enter insert · Esc close",
-			"menu.search": "Search skills",
-			"menu.empty": "No matching skill",
-			"menu.loading": "Loading skills...",
-			"menu.failed": "Catalog unavailable; showing the built-in list (the host still resolves each /name)",
-			"menu.fallback": "The host returned no skills; showing the built-in list (the host still resolves each /name)",
-			"menu.retry": "Retry",
-			"menu.multi": "Multi",
-			"menu.single": "Single",
-			"menu.apply": "Insert",
-			"menu.cancel": "Cancel",
-			"menu.recent": "Recent",
-			"menu.group.define": "1 Define",
-			"menu.group.plan": "2 Plan",
-			"menu.group.build": "3 Build",
-			"menu.group.verify": "4 Verify",
-			"menu.group.review": "5 Review",
-			"menu.group.ship": "6 Ship",
-			"menu.group.meta": "Entry",
-			"menu.group.other": "Other",
-			"menu.needPick": "Pick at least one skill",
-			"menu.tip.single": "Click a skill to insert it into the composer",
-			"menu.tip.multi": "{count} selected · Tab back to single",
-			"menu.userOnly": "user-only"
+			"panel.title": "Skills",
+			"panel.close": "Close",
+			"tab.catalog": "This session",
+			"tab.installed": "Installed",
+			"tab.add": "Add skill",
+			"search.placeholder": "Search by title, purpose, or /name",
+			"search.count": "{count}",
+			"search.empty": "No matching skill",
+			"loading": "Loading...",
+			"catalog.failed": "Catalog unavailable; showing the built-in list",
+			"catalog.fallback": "The host returned no skills; showing the built-in list",
+			"retry": "Retry",
+			"multi.on": "Multi",
+			"multi.off": "Single",
+			"filter.all": "All",
+			"filter.count": "{count}",
+			"tip.single": "Click a row to insert it into the composer",
+			"tip.multi": "{count} selected · Insert to add them all",
+			"insert": "Insert",
+			"cancel": "Cancel",
+			"recent": "Recent",
+			"group.define": "1 Define",
+			"group.plan": "2 Plan",
+			"group.build": "3 Build",
+			"group.verify": "4 Verify",
+			"group.review": "5 Review",
+			"group.ship": "6 Ship",
+			"group.meta": "Entry",
+			"group.other": "Other",
+			"needPick": "Pick at least one skill",
+			"userOnly": "user-only",
+			"installed.empty": "Nothing installed yet. Use the Add tab.",
+			"installed.root": "Install root",
+			"installed.remove": "Remove",
+			"installed.confirmRemove": "Remove \"{name}\"?",
+			"installed.removed": "Removed {name}",
+			"add.tab.repo": "Repo / URL",
+			"add.tab.paste": "Paste SKILL.md",
+			"add.repo.label": "Source: owner/repo, owner/repo/skill, or a raw URL",
+			"add.repo.placeholder": "addyosmani/agent-skills/skills/code-review-and-quality",
+			"add.name.label": "Skill name (optional, must match frontmatter)",
+			"add.name.placeholder": "code-review-and-quality",
+			"add.overwrite": "Overwrite an existing skill",
+			"add.submit": "Install",
+			"add.installing": "Installing...",
+			"add.paste.label": "SKILL.md content (needs YAML frontmatter with name)",
+			"add.paste.placeholder": "---\nname: my-skill\ndescription: when to use it\n---\n\nBody...",
+			"add.ok": "Installed {name}",
+			"add.fail": "Install failed",
+			"add.registry": "Search skills.sh and install",
+			"add.registry.search": "Search",
+			"add.registry.placeholder": "Search the public registry",
+			"add.registry.empty": "Nothing found",
+			"add.installs": "{count} installs",
+			"add.needSource": "Provide a source or paste content first",
+			"add.unavailable": "Host API unavailable: make sure the plugin is installed in the profile and DSH was restarted"
 		};
 
 		/**
 		 * Chinese title, one-line purpose, and lifecycle phase for every skill this
-		 * deployment ships. Unknown names fall back to the provider description and
-		 * the "other" phase, so a newly installed skill still lists correctly.
+		 * deployment ships. Unknown names fall back to the provider description.
 		 */
 		const CATALOG = {
 			"using-agent-skills": ["技能总入口", "按任务阶段路由到合适的技能；不知道用哪个时先看它", "meta"],
@@ -117,36 +176,52 @@ window.__ModuleLoader__.load({
 		/** Lifecycle order for the grouped list. */
 		const PHASES = ["define", "plan", "build", "verify", "review", "ship", "meta", "other"];
 
-		/**
-		 * Last-resort rows built from CATALOG alone. The picker stays usable when the
-		 * host catalog RPC is unavailable (blank session, provider error, or a
-		 * preset that mounts no filesystem skill provider): `/name` still resolves
-		 * through the host pre-step hook if the skill is installed.
-		 */
-		const FALLBACK_SKILLS = Object.keys(CATALOG).map((name) => ({
-			name,
-			description: CATALOG[name][1],
-			modelInvocable: true
-		}));
+		/** Host API prefix; must match `ROUTE_PREFIX` in index.js. */
+		const API = "dsh-skill-picker/api/v1";
 
 		/** localStorage key holding the most recently inserted skill names. */
 		const RECENT_KEY = "dsh-skill-picker.recent";
-		const RECENT_MAX = 6;
+		const RECENT_MAX = 8;
 
-		/* Opaque surfaces and solid text: the panel must never inherit the host's
-		   translucent menu material, which made an earlier version unreadable. */
 		const SURFACE = "var(--dsw-alias-bg-layer-2, #26262a)";
-		const INPUT_BG = "var(--dsw-alias-bg-layer-1, #1c1c20)";
-		const FOOT_BG = "var(--dsw-alias-bg-layer-3, #2f2f34)";
+		const PANEL_BG = "var(--dsw-alias-bg-layer-1, #1c1c20)";
+		const RAIL_BG = "var(--dsw-alias-bg-layer-3, #2f2f34)";
+		const INPUT_BG = "var(--dsw-alias-bg-base, #141416)";
 		const ROW_HOVER = "var(--dsw-alias-interactive-bg-hover, rgba(140,140,150,.16))";
-		const ROW_ACTIVE = "var(--dsw-alias-interactive-bg-active, rgba(140,140,150,.22))";
-		/* Opaque chip fill so the trigger is legible on any composer background. */
-		const CHIP = "var(--dsw-specific-selector, #333338)";
+		const ROW_ACTIVE = "var(--dsw-alias-interactive-bg-active, rgba(140,140,150,.24))";
 		const BORDER = "var(--dsw-alias-border-l3, rgba(150,150,160,.30))";
 		const LABEL = "var(--dsw-alias-label-primary, #f2f2f4)";
 		const MUTED = "var(--dsw-alias-label-secondary, #a9a9b2)";
+		const FAINT = "var(--dsw-alias-label-tertiary, #83838c)";
 		const ACCENT = "var(--dsw-static-deepseek-450, #5686fe)";
-		const SHADOW = "0 18px 50px rgba(0,0,0,.55), 0 2px 10px rgba(0,0,0,.4), 0 0 0 .5px rgba(0,0,0,.6)";
+		const DANGER = "var(--dsw-alias-state-error-primary, #f25a5a)";
+		const OK = "var(--dsw-alias-state-success-primary, #22c55e)";
+		const SHADOW = "0 24px 70px rgba(0,0,0,.62), 0 2px 12px rgba(0,0,0,.45), 0 0 0 .5px rgba(0,0,0,.6)";
+
+		/** Resolve one host API path against the document base, like the market does. */
+		function api(path) {
+			const relative = `${API}/${path}`.replace(/^\/+/, "");
+			if (typeof document === "undefined") return `/${relative}`;
+			return new URL(relative, document.baseURI).pathname;
+		}
+
+		/** Read one JSON envelope from the host, surfacing the host's own error text. */
+		async function apiJson(path, init) {
+			const response = await fetch(api(path), { cache: "no-store", ...init });
+			const text = await response.text();
+			let payload;
+			try {
+				payload = text === "" ? {} : JSON.parse(text);
+			} catch {
+				throw new Error(`接口返回了非 JSON 内容（${response.status}）`);
+			}
+			if (!response.ok || payload.ok !== true) {
+				const message = payload?.error?.message ?? `HTTP ${response.status}`;
+				const detail = Array.isArray(payload?.error?.detail) ? payload.error.detail.join("；") : "";
+				throw new Error(detail === "" ? message : `${message}（${detail}）`);
+			}
+			return payload.value;
+		}
 
 		function readRecent() {
 			try {
@@ -178,87 +253,112 @@ window.__ModuleLoader__.load({
 
 		/** Every searchable token for one row, compared lower-cased. */
 		function haystack(skill, meta) {
-			return `${skill.name} ${meta.title} ${meta.purpose}`.toLowerCase();
+			return `${skill.name} ${meta.title} ${meta.purpose} ${String(skill.description ?? "")}`.toLowerCase();
 		}
 
-		function SkillIcon({ size = 13 }) {
+		function SkillIcon({ size = 14 }) {
 			return h(
 				"svg",
 				{ viewBox: "0 0 16 16", width: size, height: size, "aria-hidden": true, style: { display: "block" } },
-				h("path", {
-					d: "M2.6 3.4h10.8v9.2H2.6z",
-					fill: "none",
-					stroke: "currentColor",
-					strokeWidth: 1.25,
-					strokeLinejoin: "round"
-				}),
+				h("path", { d: "M2.6 3.4h10.8v9.2H2.6z", fill: "none", stroke: "currentColor", strokeWidth: 1.25, strokeLinejoin: "round" }),
 				h("path", { d: "M5 6.4h6M5 9h3.6", fill: "none", stroke: "currentColor", strokeWidth: 1.25, strokeLinecap: "round" })
 			);
 		}
 
+		function Tick({ size = 10 }) {
+			return h(
+				"svg",
+				{ viewBox: "0 0 16 16", width: size, height: size, "aria-hidden": true },
+				h("path", { d: "M3.4 8.4l3 3 6.2-6.6", fill: "none", stroke: "#fff", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" })
+			);
+		}
+
+		const fieldStyle = {
+			boxSizing: "border-box",
+			width: "100%",
+			padding: "7px 10px",
+			borderRadius: "9px",
+			border: `1px solid ${BORDER}`,
+			background: INPUT_BG,
+			color: LABEL,
+			font: "inherit",
+			fontSize: "13px",
+			outline: "none"
+		};
+
+		function buttonStyle(primary, disabled) {
+			return {
+				padding: "6px 13px",
+				borderRadius: "8px",
+				border: `1px solid ${primary ? ACCENT : BORDER}`,
+				background: primary ? ACCENT : "transparent",
+				color: primary ? "#fff" : LABEL,
+				font: "inherit",
+				fontSize: "12px",
+				fontWeight: primary ? 600 : 400,
+				cursor: disabled ? "default" : "pointer",
+				opacity: disabled ? 0.5 : 1,
+				whiteSpace: "nowrap"
+			};
+		}
+
 		/**
-		 * Composer control: opens a grouped, searchable skill list and inserts the
-		 * chosen names as `/name` gestures, so the host pre-step hook injects each
-		 * skill's instructions for this turn.
-		 * @param props - Session props (`sessionId`, `inputActions`, `t`) plus this
-		 *   registration's injected `loadSkills`.
-		 * @returns the button and, while open, its portal-mounted panel.
+		 * The picker: a full-size dialog with three tabs.
+		 * @param props - session props (`sessionId`, `inputActions`, `t`) plus the
+		 *   injected `loadSkills`.
 		 */
 		function SkillPicker({ sessionId, inputActions, loadSkills, t }) {
 			const [open, setOpen] = React.useState(false);
-			const [phase, setPhase] = React.useState("idle");
-			const [skills, setSkills] = React.useState([]);
-			const [error, setError] = React.useState("");
+			const [tab, setTab] = React.useState("catalog");
+			const [phase, setPhase] = React.useState("all");
 			const [query, setQuery] = React.useState("");
 			const [multi, setMulti] = React.useState(false);
 			const [picked, setPicked] = React.useState([]);
 			const [active, setActive] = React.useState(0);
-			const [anchor, setAnchor] = React.useState(null);
 			const [flash, setFlash] = React.useState("");
-			const [notice, setNotice] = React.useState("");
 			const [recent, setRecent] = React.useState([]);
-			/** Retry counter: bumping it re-runs the catalog effect without touching `phase`. */
 			const [reload, setReload] = React.useState(0);
-			/** Monotonic request id, so a superseded fetch can never write state. */
-			const requestSeq = React.useRef(0);
+
+			const [catalog, setCatalog] = React.useState({ phase: "idle", rows: [], note: "", error: "" });
+			const [installed, setInstalled] = React.useState({ phase: "idle", rows: [], root: "", error: "" });
+
+			const [addSource, setAddSource] = React.useState("");
+			const [addName, setAddName] = React.useState("");
+			const [addOverwrite, setAddOverwrite] = React.useState(false);
+			const [addMode, setAddMode] = React.useState("repo");
+			const [pasteText, setPasteText] = React.useState("");
+			const [addState, setAddState] = React.useState({ phase: "idle", message: "", error: "" });
+			const [registry, setRegistry] = React.useState({ phase: "idle", rows: [], error: "" });
+
 			const buttonRef = React.useRef(null);
 			const panelRef = React.useRef(null);
 			const searchRef = React.useRef(null);
 			const listRef = React.useRef(null);
+			const seq = React.useRef(0);
+			const loadRef = React.useRef(loadSkills);
+			loadRef.current = loadSkills;
+			const tRef = React.useRef(t);
+			tRef.current = t;
 
 			const close = React.useCallback(() => {
 				setOpen(false);
 				setQuery("");
-				setNotice("");
+				window.setTimeout(() => setFlash(""), 0);
 			}, []);
 
-			const place = React.useCallback(() => {
-				const node = buttonRef.current;
-				if (node === null) return;
-				const rect = node.getBoundingClientRect();
-				const width = Math.min(620, Math.max(430, window.innerWidth - 32));
-				const left = Math.max(12, Math.min(rect.left, window.innerWidth - width - 12));
-				const room = window.innerHeight - rect.top - 20;
-				setAnchor({
-					left,
-					bottom: window.innerHeight - rect.top + 10,
-					width,
-					maxHeight: Math.max(300, Math.min(600, room))
-				});
-			}, []);
-
-			const openMenu = React.useCallback(() => {
+			const openPanel = React.useCallback(() => {
 				if (open) {
 					close();
 					return;
 				}
 				setRecent(readRecent());
 				setActive(0);
-				setNotice("");
-				place();
+				setQuery("");
+				setPicked([]);
 				setOpen(true);
-			}, [open, close, place]);
+			}, [open, close]);
 
+			/* Close on Escape and on any pointer press outside the dialog. */
 			React.useEffect(() => {
 				if (!open) return undefined;
 				const onPointerDown = (event) => {
@@ -275,71 +375,53 @@ window.__ModuleLoader__.load({
 					setQuery("");
 					if (buttonRef.current !== null) buttonRef.current.focus();
 				};
-				const reposition = () => place();
 				document.addEventListener("pointerdown", onPointerDown, true);
 				document.addEventListener("keydown", onKeyDown, true);
-				window.addEventListener("resize", reposition);
 				return () => {
 					document.removeEventListener("pointerdown", onPointerDown, true);
 					document.removeEventListener("keydown", onKeyDown, true);
-					window.removeEventListener("resize", reposition);
 				};
-			}, [open, place]);
+			}, [open]);
 
 			React.useEffect(() => {
 				if (!open) return undefined;
 				if (searchRef.current !== null) searchRef.current.focus();
 				return undefined;
-			}, [open]);
+			}, [open, tab]);
 
-			/**
-			 * Catalog loader read through a ref so identity churn in props can never
-			 * re-trigger (and therefore abort) the in-flight fetch.
-			 */
-			const loadRef = React.useRef(loadSkills);
-			loadRef.current = loadSkills;
-			const tRef = React.useRef(t);
-			tRef.current = t;
-
+			/* Load the session catalog once per open. */
 			React.useEffect(() => {
 				if (!open) return undefined;
-				requestSeq.current += 1;
-				const seq = requestSeq.current;
+				seq.current += 1;
+				const mine = seq.current;
 				const abort = new AbortController();
-				setPhase("loading");
-				setError("");
-				/* A hung RPC must not leave the panel on skeletons forever. */
+				setCatalog({ phase: "loading", rows: [], note: "", error: "" });
 				const timer = window.setTimeout(() => {
-					if (seq !== requestSeq.current) return;
-					setSkills(FALLBACK_SKILLS);
-					setPhase("ready");
-					setNotice(tRef.current("menu.failed"));
+					if (mine !== seq.current) return;
+					setCatalog({ phase: "ready", rows: [], note: tRef.current("catalog.failed"), error: "timeout" });
 				}, 8000);
 				Promise.resolve()
 					.then(() => (sessionId === undefined ? [] : loadRef.current(abort.signal)))
 					.then(
-						(list) => {
+						(rows) => {
 							window.clearTimeout(timer);
-							if (seq !== requestSeq.current) return;
-							const rows = Array.isArray(list) ? list : [];
-							if (rows.length === 0) {
-								/* Empty catalog: keep the built-in catalog so the picker is
-								   never a dead panel. `/name` still resolves host-side. */
-								setSkills(FALLBACK_SKILLS);
-								setPhase("ready");
-								setNotice(tRef.current("menu.fallback"));
-								return;
-							}
-							setSkills(rows);
-							setPhase("ready");
+							if (mine !== seq.current) return;
+							const list = Array.isArray(rows) ? rows : [];
+							setCatalog(
+								list.length === 0
+									? { phase: "ready", rows: [], note: tRef.current("catalog.fallback"), error: "" }
+									: { phase: "ready", rows: list, note: "", error: "" }
+							);
 						},
 						(cause) => {
 							window.clearTimeout(timer);
-							if (seq !== requestSeq.current) return;
-							setError(cause instanceof Error ? cause.message : String(cause));
-							setSkills(FALLBACK_SKILLS);
-							setPhase("ready");
-							setNotice(tRef.current("menu.failed"));
+							if (mine !== seq.current) return;
+							setCatalog({
+								phase: "ready",
+								rows: [],
+								note: tRef.current("catalog.failed"),
+								error: cause instanceof Error ? cause.message : String(cause)
+							});
 						}
 					);
 				return () => {
@@ -348,74 +430,81 @@ window.__ModuleLoader__.load({
 				};
 			}, [open, sessionId, reload]);
 
-			/** Rows in render order, shared by the list and keyboard navigation. */
+			/* Load the on-disk list whenever that tab is opened or a mutation lands. */
+			React.useEffect(() => {
+				if (!open || tab !== "installed") return undefined;
+				const abort = new AbortController();
+				setInstalled((current) => ({ ...current, phase: "loading", error: "" }));
+				apiJson("installed").then(
+					(value) => {
+						if (abort.signal.aborted) return;
+						setInstalled({ phase: "ready", rows: value.skills ?? [], root: value.root ?? "", error: "" });
+					},
+					(cause) => {
+						if (abort.signal.aborted) return;
+						setInstalled({ phase: "ready", rows: [], root: "", error: cause instanceof Error ? cause.message : String(cause) });
+					}
+				);
+				return () => abort.abort();
+			}, [open, tab, reload]);
+
+			const insertNames = React.useCallback(
+				(names) => {
+					if (names.length === 0 || inputActions === undefined) return;
+					const text = names.map((name) => `/${name}`).join(" ") + " ";
+					if (inputActions.insertText(text, inputActions.captureInsertion()) === false) return;
+					const next = [...names, ...readRecent().filter((name) => !names.includes(name))].slice(0, RECENT_MAX);
+					writeRecent(next);
+					setRecent(next);
+					setFlash(names.join(" "));
+					setPicked([]);
+					close();
+				},
+				[inputActions, close]
+			);
+
+			const commit = React.useCallback(
+				(names) => {
+					if (names.length === 0) return;
+					insertNames(names);
+				},
+				[insertNames]
+			);
+
+			/** Rows for the active tab, already filtered and grouped. */
 			const model = React.useMemo(() => {
+				const source = tab === "installed" ? installed.rows : catalog.rows;
 				const needle = query.trim().toLowerCase();
-				const matched = skills.filter((skill) => needle === "" || haystack(skill, describe(skill)).includes(needle));
+				const matched = source.filter((skill) => needle === "" || haystack(skill, describe(skill)).includes(needle));
 				const rows = matched.map((skill) => ({ skill, meta: describe(skill) }));
 				const groups = [];
 				const used = new Set();
-				if (needle === "") {
-					const recentRows = recent
-						.map((name) => rows.find((row) => row.skill.name === name))
-						.filter((row) => row !== undefined);
+				if (needle === "" && phase === "all" && tab === "catalog") {
+					const recentRows = recent.map((name) => rows.find((row) => row.skill.name === name)).filter((row) => row !== undefined);
 					if (recentRows.length > 0) {
-						groups.push({ key: "recent", label: t("menu.recent"), rows: recentRows });
+						groups.push({ key: "recent", label: t("recent"), rows: recentRows });
 						for (const row of recentRows) used.add(row.skill.name);
 					}
 				}
-				for (const key of PHASES) {
+				const order = phase === "all" ? PHASES : [phase];
+				for (const key of order) {
 					const items = rows.filter((row) => !used.has(row.skill.name) && row.meta.phase === key);
-					if (items.length > 0) groups.push({ key, label: t("menu.group." + key), rows: items });
+					if (items.length > 0) groups.push({ key, label: t(`group.${key}`), rows: items });
 				}
 				return { groups, flat: groups.reduce((all, group) => all.concat(group.rows), []) };
-			}, [skills, query, recent, t]);
+			}, [tab, catalog.rows, installed.rows, query, phase, recent, t]);
 
 			React.useEffect(() => {
 				setActive((current) => (current >= model.flat.length ? 0 : current));
 			}, [model.flat.length]);
 
-			const insertNames = React.useCallback(
-				(names) => {
-					if (names.length === 0 || inputActions === undefined) return;
-					const text = names.map((name) => "/" + name).join(" ") + " ";
-					const applied = inputActions.insertText(text, inputActions.captureInsertion());
-					if (applied === false) {
-						setNotice(t("menu.needPick"));
-						return;
-					}
-					const next = [...names, ...readRecent().filter((name) => !names.includes(name))].slice(0, RECENT_MAX);
-					writeRecent(next);
-					setRecent(next);
-					setFlash(names.join(" "));
-					window.setTimeout(() => setFlash(""), 1600);
-					setPicked([]);
-					close();
-				},
-				[inputActions, close, t]
-			);
+			React.useEffect(() => {
+				if (!open || listRef.current === null) return;
+				const node = listRef.current.querySelector('[data-active="true"]');
+				if (node !== null && typeof node.scrollIntoView === "function") node.scrollIntoView({ block: "nearest" });
+			}, [active, open, model]);
 
-			const commit = React.useCallback(
-				(names) => {
-					if (multi && names.length === 0) {
-						setNotice(t("menu.needPick"));
-						return;
-					}
-					insertNames(names);
-				},
-				[multi, insertNames, t]
-			);
-
-			const onRowClick = (name) => {
-				if (multi) {
-					setPicked((current) => (current.includes(name) ? current.filter((item) => item !== name) : [...current, name]));
-					setNotice("");
-					return;
-				}
-				commit([name]);
-			};
-
-			const onKeyDown = (event) => {
+			const onListKeyDown = (event) => {
 				if (event.key === "ArrowDown") {
 					event.preventDefault();
 					setActive((current) => (model.flat.length === 0 ? 0 : (current + 1) % model.flat.length));
@@ -443,372 +532,72 @@ window.__ModuleLoader__.load({
 				}
 			};
 
-			React.useEffect(() => {
-				if (!open || listRef.current === null) return;
-				const node = listRef.current.querySelector('[data-active="true"]');
-				if (node === null || typeof node.scrollIntoView !== "function") return;
-				node.scrollIntoView({ block: "nearest" });
-			}, [active, open, model]);
-
-			let cursor = -1;
-			const rowNodes = [];
-			for (const group of model.groups) {
-				rowNodes.push(
-					h(
-						"div",
-						{
-							key: "g:" + group.key,
-							style: {
-								padding: "10px 12px 5px",
-								color: MUTED,
-								fontSize: "11px",
-								fontWeight: 700,
-								letterSpacing: "0.05em",
-								position: "sticky",
-								top: 0,
-								background: SURFACE,
-								zIndex: 1
-							}
-						},
-						group.label
-					)
-				);
-				for (const row of group.rows) {
-					cursor += 1;
-					const index = cursor;
-					const name = row.skill.name;
-					const isActive = index === active;
-					const isPicked = picked.includes(name);
-					rowNodes.push(
-						h(
-							"button",
-							{
-								key: name,
-								id: "skill-row-" + index,
-								type: "button",
-								role: multi ? "menuitemcheckbox" : "option",
-								"aria-selected": multi ? isPicked : isActive,
-								"data-active": isActive ? "true" : "false",
-								onMouseEnter: () => setActive(index),
-								onClick: () => onRowClick(name),
-								style: {
-									display: "flex",
-									alignItems: "flex-start",
-									gap: "10px",
-									width: "100%",
-									textAlign: "left",
-									padding: "8px 12px",
-									border: "none",
-									borderRadius: "8px",
-									background: isPicked || isActive ? ROW_ACTIVE : "transparent",
-									color: LABEL,
-									font: "inherit",
-									cursor: "pointer"
-								}
-							},
-							multi
-								? h(
-										"span",
-										{
-											"aria-hidden": true,
-											style: {
-												flex: "none",
-												width: "15px",
-												height: "15px",
-												marginTop: "3px",
-												borderRadius: "4px",
-												border: "1px solid " + (isPicked ? ACCENT : BORDER),
-												background: isPicked ? ACCENT : "transparent",
-												display: "inline-flex",
-												alignItems: "center",
-												justifyContent: "center"
-											}
-										},
-										isPicked
-											? h(
-													"svg",
-													{ viewBox: "0 0 16 16", width: "10", height: "10", "aria-hidden": true },
-													h("path", {
-														d: "M3.4 8.4l3 3 6.2-6.6",
-														fill: "none",
-														stroke: "#fff",
-														strokeWidth: 2,
-														strokeLinecap: "round",
-														strokeLinejoin: "round"
-													})
-												)
-											: null
-									)
-								: h(
-										"span",
-										{ "aria-hidden": true, style: { flex: "none", marginTop: "2px", color: MUTED } },
-										h(SkillIcon, { size: 14 })
-									),
-							h(
-								"span",
-								{ style: { minWidth: "0", display: "flex", flexDirection: "column", gap: "1px" } },
-								h(
-									"span",
-									{ style: { display: "flex", alignItems: "baseline", gap: "7px", flexWrap: "wrap" } },
-									h("span", { style: { fontSize: "13.5px", fontWeight: 600, lineHeight: "20px" } }, row.meta.title),
-									h(
-										"span",
-										{
-											style: {
-												fontSize: "11px",
-												lineHeight: "16px",
-												color: MUTED,
-												fontFamily: "var(--ds-font-family-code, ui-monospace, monospace)"
-											}
-										},
-										"/" + name
-									),
-									row.skill.modelInvocable === false
-										? h(
-												"span",
-												{
-													style: {
-														fontSize: "10px",
-														lineHeight: "15px",
-														padding: "0 5px",
-														borderRadius: "4px",
-														border: "1px solid " + BORDER,
-														color: MUTED
-													}
-												},
-												t("menu.userOnly")
-											)
-										: null
-								),
-								row.meta.purpose === ""
-									? null
-									: h(
-											"span",
-											{ style: { fontSize: "12px", lineHeight: "18px", color: MUTED, wordBreak: "break-word" } },
-											row.meta.purpose
-										)
-							)
-						)
-					);
+			const runInstall = async (source, content) => {
+				setAddState({ phase: "busy", message: "", error: "" });
+				try {
+					const body = content === undefined
+						? { source, name: addName.trim() === "" ? undefined : addName.trim(), overwrite: addOverwrite }
+						: { content, name: addName.trim() === "" ? undefined : addName.trim(), overwrite: addOverwrite };
+					const value = await apiJson("install", {
+						method: "POST",
+						headers: { "content-type": "application/json" },
+						body: JSON.stringify(body)
+					});
+					setAddState({ phase: "done", message: t("add.ok", { name: value.name }), error: "" });
+					setPasteText("");
+					setAddSource("");
+					setReload((n) => n + 1);
+				} catch (cause) {
+					const message = cause instanceof Error ? cause.message : String(cause);
+					setAddState({
+						phase: "error",
+						message: "",
+						error: message.includes("Failed to fetch") || message.includes("NetworkError") ? t("add.unavailable") : message
+					});
 				}
-			}
+			};
 
-			const panel =
-				open && anchor !== null
-					? ReactDOM.createPortal(
-							h(
-								"div",
-								{
-									ref: panelRef,
-									role: "dialog",
-									"aria-label": t("menu.title"),
-									style: {
-										position: "fixed",
-										left: anchor.left + "px",
-										bottom: anchor.bottom + "px",
-										width: anchor.width + "px",
-										maxHeight: anchor.maxHeight + "px",
-										display: "flex",
-										flexDirection: "column",
-										background: SURFACE,
-										color: LABEL,
-										border: "1px solid " + BORDER,
-										borderRadius: "14px",
-										boxShadow: SHADOW,
-										overflow: "hidden",
-										zIndex: 2147483000,
-										fontSize: "13px",
-										lineHeight: "20px",
-										fontFamily: "inherit",
-										opacity: 1
-									}
-								},
-								h(
-									"div",
-									{
-										style: {
-											padding: "12px 14px 10px",
-											borderBottom: "1px solid " + BORDER,
-											display: "flex",
-											flexDirection: "column",
-											gap: "9px",
-											flex: "none"
-										}
-									},
-									h(
-										"div",
-										{ style: { display: "flex", alignItems: "center", gap: "10px" } },
-										h("span", { style: { fontSize: "14px", fontWeight: 600 } }, t("menu.title")),
-										h("span", { style: { color: MUTED, fontSize: "11px" } }, t("menu.count", { count: skills.length })),
-										h("span", { style: { flex: "1 1 auto" } }),
-										h(
-											"button",
-											{
-												type: "button",
-												onClick: () => {
-													setMulti((current) => !current);
-													setPicked([]);
-													setNotice("");
-												},
-												style: {
-													padding: "3px 9px",
-													borderRadius: "999px",
-													border: "1px solid " + (multi ? ACCENT : BORDER),
-													background: multi ? ACCENT : "transparent",
-													color: multi ? "#fff" : MUTED,
-													font: "inherit",
-													fontSize: "11px",
-													cursor: "pointer"
-												}
-											},
-											multi ? t("menu.multi") : t("menu.single")
-										)
-									),
-									h("input", {
-										ref: searchRef,
-										type: "text",
-										value: query,
-										placeholder: t("menu.search"),
-										"aria-label": t("menu.search"),
-										onChange: (event) => setQuery(event.target.value),
-										onKeyDown: onKeyDown,
-										style: {
-											boxSizing: "border-box",
-											width: "100%",
-											padding: "7px 10px",
-											borderRadius: "9px",
-											border: "1px solid " + BORDER,
-											background: INPUT_BG,
-											color: LABEL,
-											font: "inherit",
-											fontSize: "13px",
-											outline: "none"
-										}
-									}),
-									h("span", { style: { color: MUTED, fontSize: "11px", lineHeight: "15px" } }, t("menu.hint"))
-								),
-								h(
-									"div",
-									{
-										ref: listRef,
-										role: "listbox",
-										"aria-activedescendant": "skill-row-" + active,
-										style: { flex: "1 1 auto", minHeight: "0", overflowY: "auto", padding: "4px 6px 8px" }
-									},
-									phase === "loading"
-										? h("div", { style: { padding: "16px 10px", color: MUTED } }, t("menu.loading"))
-										: phase === "failed"
-											? h(
-													"div",
-													{ style: { padding: "16px 10px", color: MUTED } },
-													t("menu.failed") + "：" + error,
-													h(
-														"button",
-														{
-															type: "button",
-															onClick: () => setPhase("idle"),
-															style: {
-																marginLeft: "10px",
-																padding: "2px 8px",
-																borderRadius: "6px",
-																border: "1px solid " + BORDER,
-																background: "transparent",
-																color: "inherit",
-																font: "inherit",
-																cursor: "pointer"
-															}
-														},
-														t("menu.retry")
-													)
-												)
-											: model.flat.length === 0
-												? h("div", { style: { padding: "16px 10px", color: MUTED } }, t("menu.empty"))
-												: rowNodes
-								),
-								h(
-									"div",
-									{
-										style: {
-											display: "flex",
-											alignItems: "center",
-											gap: "8px",
-											padding: "9px 14px",
-											borderTop: "1px solid " + BORDER,
-											flex: "none",
-											background: FOOT_BG
-										}
-									},
-									h(
-										"span",
-										{ style: { color: MUTED, fontSize: "12px", flex: "1 1 auto", minWidth: "0" } },
-										notice !== "" ? notice : multi ? t("menu.tip.multi", { count: picked.length }) : t("menu.tip.single")
-									),
-									multi
-										? h(
-												"span",
-												{ style: { display: "inline-flex", gap: "6px", flex: "none" } },
-												h(
-													"button",
-													{
-														type: "button",
-														onClick: () => {
-															setPicked([]);
-															close();
-														},
-														style: {
-															padding: "5px 11px",
-															borderRadius: "8px",
-															border: "1px solid " + BORDER,
-															background: "transparent",
-															color: LABEL,
-															font: "inherit",
-															fontSize: "12px",
-															cursor: "pointer"
-														}
-													},
-													t("menu.cancel")
-												),
-												h(
-													"button",
-													{
-														type: "button",
-														onClick: () => commit(picked),
-														disabled: picked.length === 0,
-														style: {
-															padding: "5px 11px",
-															borderRadius: "8px",
-															border: "1px solid " + ACCENT,
-															background: ACCENT,
-															color: "#fff",
-															font: "inherit",
-															fontSize: "12px",
-															cursor: picked.length === 0 ? "default" : "pointer",
-															opacity: picked.length === 0 ? 0.5 : 1
-														}
-													},
-													picked.length === 0 ? t("menu.apply") : t("menu.apply") + " " + picked.length
-												)
-											)
-										: null
-								)
-							),
-							document.body
-						)
-					: null;
+			const runRegistry = async () => {
+				const term = addSource.trim();
+				if (term === "") {
+					setRegistry({ phase: "idle", rows: [], error: t("add.needSource") });
+					return;
+				}
+				setRegistry({ phase: "loading", rows: [], error: "" });
+				try {
+					const value = await apiJson(`search?q=${encodeURIComponent(term)}`);
+					setRegistry({ phase: "ready", rows: value.skills ?? [], error: "" });
+				} catch (cause) {
+					setRegistry({ phase: "ready", rows: [], error: cause instanceof Error ? cause.message : String(cause) });
+				}
+			};
 
-			return h(
-				React.Fragment,
-				null,
-				h(
+			const runRemove = async (name) => {
+				if (!window.confirm(t("installed.confirmRemove", { name }))) return;
+				try {
+					await apiJson("remove", {
+						method: "POST",
+						headers: { "content-type": "application/json" },
+						body: JSON.stringify({ name })
+					});
+					setFlash(t("installed.removed", { name }));
+					setReload((n) => n + 1);
+				} catch (cause) {
+					setInstalled((current) => ({ ...current, error: cause instanceof Error ? cause.message : String(cause) }));
+				}
+			};
+
+			if (!open) {
+				return h(
 					"button",
 					{
 						ref: buttonRef,
 						type: "button",
 						"aria-haspopup": "dialog",
-						"aria-expanded": open,
+						"aria-expanded": false,
 						"aria-label": t("button.tooltip"),
 						title: t("button.tooltip"),
-						onClick: openMenu,
+						onClick: openPanel,
 						onMouseDown: (event) => event.preventDefault(),
 						style: {
 							display: "inline-flex",
@@ -816,8 +605,8 @@ window.__ModuleLoader__.load({
 							gap: "5px",
 							padding: "4px 9px",
 							borderRadius: "8px",
-							border: "1px solid " + (open ? ACCENT : BORDER),
-							background: open ? ROW_ACTIVE : CHIP,
+							border: `1px solid ${BORDER}`,
+							background: "var(--dsw-specific-selector, #333338)",
 							color: LABEL,
 							font: "inherit",
 							fontSize: "12px",
@@ -828,14 +617,600 @@ window.__ModuleLoader__.load({
 						}
 					},
 					h(SkillIcon, { size: 13 }),
-					h("span", null, flash === "" ? t("button.label") : t("button.inserted") + " /" + flash)
+					h("span", null, flash === "" ? t("button.label") : `${t("button.inserted")} /${flash}`)
+				);
+			}
+
+			const phasesPresent = PHASES.filter((key) =>
+				(tab === "installed" ? installed.rows : catalog.rows).some((skill) => describe(skill).phase === key)
+			);
+
+			const tabButton = (id, label) =>
+				h(
+					"button",
+					{
+						key: id,
+						type: "button",
+						role: "tab",
+						"aria-selected": tab === id,
+						onClick: () => {
+							setTab(id);
+							setQuery("");
+							setPhase("all");
+							setPicked([]);
+						},
+						style: {
+							padding: "7px 14px",
+							borderRadius: "8px",
+							border: "1px solid transparent",
+							background: tab === id ? ROW_ACTIVE : "transparent",
+							color: tab === id ? LABEL : MUTED,
+							font: "inherit",
+							fontSize: "13px",
+							fontWeight: tab === id ? 600 : 400,
+							cursor: "pointer"
+						}
+					},
+					label
+				);
+
+			const listSection =
+				tab === "add"
+					? null
+					: h(
+							"div",
+							{ style: { display: "flex", flex: "1 1 auto", minHeight: "0" } },
+							h(
+								"div",
+								{
+									style: {
+										flex: "none",
+										width: "168px",
+										borderRight: `1px solid ${BORDER}`,
+										background: RAIL_BG,
+										padding: "8px 8px 12px",
+										overflowY: "auto"
+									}
+								},
+								[
+									h(
+										"button",
+										{
+											key: "all",
+											type: "button",
+											onClick: () => setPhase("all"),
+											style: {
+												display: "flex",
+												justifyContent: "space-between",
+												width: "100%",
+												padding: "7px 9px",
+												marginBottom: "2px",
+												border: "none",
+												borderRadius: "7px",
+												background: phase === "all" ? ROW_ACTIVE : "transparent",
+												color: phase === "all" ? LABEL : MUTED,
+												font: "inherit",
+												fontSize: "12.5px",
+												cursor: "pointer"
+											}
+										},
+										h("span", null, t("filter.all")),
+										h("span", { style: { color: FAINT } }, (tab === "installed" ? installed.rows : catalog.rows).length)
+									),
+									...phasesPresent.map((key) => {
+										const count = (tab === "installed" ? installed.rows : catalog.rows).filter((skill) => describe(skill).phase === key).length;
+										return h(
+											"button",
+											{
+												key,
+												type: "button",
+												onClick: () => setPhase(key),
+												style: {
+													display: "flex",
+													justifyContent: "space-between",
+													width: "100%",
+													padding: "7px 9px",
+													marginBottom: "2px",
+													border: "none",
+													borderRadius: "7px",
+													background: phase === key ? ROW_ACTIVE : "transparent",
+													color: phase === key ? LABEL : MUTED,
+													font: "inherit",
+													fontSize: "12.5px",
+													cursor: "pointer",
+													textAlign: "left"
+												}
+											},
+											h("span", null, t(`group.${key}`)),
+											h("span", { style: { color: FAINT } }, count)
+										);
+									})
+								]
+							),
+							h(
+								"div",
+								{ style: { flex: "1 1 auto", minWidth: "0", display: "flex", flexDirection: "column" } },
+								h(
+									"div",
+									{ ref: listRef, role: "listbox", tabIndex: -1, onKeyDown: onListKeyDown, style: { flex: "1 1 auto", minHeight: "0", overflowY: "auto", padding: "6px 8px 12px" } },
+									catalog.phase === "loading" && tab === "catalog"
+										? h("div", { style: { padding: "24px 12px", color: MUTED } }, t("loading"))
+										: installed.phase === "loading" && tab === "installed"
+											? h("div", { style: { padding: "24px 12px", color: MUTED } }, t("loading"))
+											: model.flat.length === 0
+												? h(
+														"div",
+														{ style: { padding: "24px 12px", color: MUTED } },
+														tab === "installed"
+															? h(React.Fragment, null, t("installed.empty"), installed.error === "" ? null : h("div", { style: { color: DANGER, marginTop: "6px", fontSize: "12px" } }, installed.error))
+															: h(React.Fragment, null, t("search.empty"), catalog.note === "" ? null : h("div", { style: { marginTop: "6px", fontSize: "12px", color: FAINT } }, catalog.note))
+													)
+												: model.groups.map((group) =>
+														h(
+															React.Fragment,
+															{ key: group.key },
+															h(
+																"div",
+																{
+																	style: {
+																		padding: "10px 10px 4px",
+																		color: FAINT,
+																		fontSize: "11px",
+																		fontWeight: 700,
+																		letterSpacing: "0.05em",
+																		position: "sticky",
+																		top: 0,
+																		background: PANEL_BG,
+																		zIndex: 1
+																	}
+																},
+																group.label
+															),
+															...group.rows.map((row) => {
+																const index = model.flat.indexOf(row);
+																const name = row.skill.name;
+																const isActive = index === active;
+																const isPicked = picked.includes(name);
+																return h(
+																	"button",
+																	{
+																		key: name,
+																		type: "button",
+																		role: multi ? "menuitemcheckbox" : "option",
+																		"aria-selected": multi ? isPicked : isActive,
+																		"data-active": isActive ? "true" : "false",
+																		onMouseEnter: () => setActive(index),
+																		onClick: () => {
+																			if (multi) {
+																				setPicked((current) =>
+																					current.includes(name) ? current.filter((item) => item !== name) : [...current, name]
+																				);
+																				return;
+																			}
+																			commit([name]);
+																		},
+																		style: {
+																			display: "flex",
+																			alignItems: "flex-start",
+																			gap: "10px",
+																			width: "100%",
+																			textAlign: "left",
+																			padding: "9px 10px",
+																			border: "none",
+																			borderRadius: "8px",
+																			background: isPicked || isActive ? ROW_ACTIVE : "transparent",
+																			color: LABEL,
+																			font: "inherit",
+																			cursor: "pointer"
+																		}
+																	},
+																	multi
+																		? h(
+																				"span",
+																				{
+																					"aria-hidden": true,
+																					style: {
+																						flex: "none",
+																						width: "15px",
+																						height: "15px",
+																						marginTop: "3px",
+																						borderRadius: "4px",
+																						border: `1px solid ${isPicked ? ACCENT : BORDER}`,
+																						background: isPicked ? ACCENT : "transparent",
+																						display: "inline-flex",
+																						alignItems: "center",
+																						justifyContent: "center"
+																					}
+																				},
+																				isPicked ? h(Tick) : null
+																			)
+																		: h("span", { "aria-hidden": true, style: { flex: "none", marginTop: "2px", color: FAINT } }, h(SkillIcon, { size: 15 })),
+																	h(
+																		"span",
+																		{ style: { minWidth: "0", display: "flex", flexDirection: "column", gap: "2px", flex: "1 1 auto" } },
+																		h(
+																			"span",
+																			{ style: { display: "flex", alignItems: "baseline", gap: "8px", flexWrap: "wrap" } },
+																			h("span", { style: { fontSize: "13.5px", fontWeight: 600, lineHeight: "20px" } }, row.meta.title),
+																			h(
+																				"span",
+																				{ style: { fontSize: "11px", lineHeight: "16px", color: FAINT, fontFamily: "var(--ds-font-family-code, ui-monospace, monospace)" } },
+																				`/${name}`
+																			),
+																			row.skill.modelInvocable === false
+																				? h(
+																						"span",
+																						{ style: { fontSize: "10px", lineHeight: "15px", padding: "0 5px", borderRadius: "4px", border: `1px solid ${BORDER}`, color: MUTED } },
+																						t("userOnly")
+																					)
+																				: null
+																		),
+																		row.meta.purpose === ""
+																			? null
+																			: h("span", { style: { fontSize: "12px", lineHeight: "17px", color: MUTED, wordBreak: "break-word" } }, row.meta.purpose)
+																	),
+																	tab === "installed"
+																		? h(
+																				"span",
+																				{
+																					role: "button",
+																					tabIndex: 0,
+																					onClick: (event) => {
+																						event.stopPropagation();
+																						runRemove(name);
+																					},
+																					style: { flex: "none", alignSelf: "center", fontSize: "11px", color: DANGER, padding: "2px 6px", borderRadius: "6px", border: `1px solid ${BORDER}` }
+																				},
+																				t("installed.remove")
+																			)
+																		: null
+																);
+															})
+														)
+													)
+								)
+							)
+						);
+
+			const addSection = h(
+				"div",
+				{ style: { flex: "1 1 auto", minHeight: "0", overflowY: "auto", padding: "14px 16px 18px", display: "flex", flexDirection: "column", gap: "14px" } },
+				h(
+					"div",
+					{ style: { display: "flex", gap: "6px" } },
+					h(
+						"button",
+						{ type: "button", onClick: () => setAddMode("repo"), style: buttonStyle(addMode === "repo", false) },
+						t("add.tab.repo")
+					),
+					h(
+						"button",
+						{ type: "button", onClick: () => setAddMode("paste"), style: buttonStyle(addMode === "paste", false) },
+						t("add.tab.paste")
+					)
+				),
+				addMode === "repo"
+					? h(
+							React.Fragment,
+							null,
+							h(
+								"label",
+								{ style: { display: "flex", flexDirection: "column", gap: "6px", fontSize: "12px", color: MUTED } },
+								t("add.repo.label"),
+								h("input", {
+									type: "text",
+									value: addSource,
+									placeholder: t("add.repo.placeholder"),
+									onChange: (event) => setAddSource(event.target.value),
+									style: fieldStyle
+								})
+							),
+							h(
+								"div",
+								{ style: { display: "flex", gap: "8px", alignItems: "flex-end" } },
+								h(
+									"label",
+									{ style: { display: "flex", flexDirection: "column", gap: "6px", fontSize: "12px", color: MUTED, flex: "1 1 auto" } },
+									t("add.name.label"),
+									h("input", {
+										type: "text",
+										value: addName,
+										placeholder: t("add.name.placeholder"),
+										onChange: (event) => setAddName(event.target.value),
+										style: fieldStyle
+									})
+								),
+								h(
+									"button",
+									{
+										type: "button",
+										onClick: () => runInstall(addSource.trim(), undefined),
+										disabled: addState.phase === "busy" || addSource.trim() === "",
+										style: buttonStyle(true, addState.phase === "busy" || addSource.trim() === "")
+									},
+									addState.phase === "busy" ? t("add.installing") : t("add.submit")
+								)
+							),
+							h(
+								"label",
+								{ style: { display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", color: MUTED } },
+								h("input", { type: "checkbox", checked: addOverwrite, onChange: (event) => setAddOverwrite(event.target.checked) }),
+								t("add.overwrite")
+							),
+							h(
+								"div",
+								{ style: { borderTop: `1px solid ${BORDER}`, paddingTop: "12px", display: "flex", flexDirection: "column", gap: "8px" } },
+								h("div", { style: { fontSize: "12px", fontWeight: 600, color: LABEL } }, t("add.registry")),
+								h(
+									"div",
+									{ style: { display: "flex", gap: "8px" } },
+									h("input", {
+										type: "text",
+										value: addSource,
+										placeholder: t("add.registry.placeholder"),
+										onChange: (event) => setAddSource(event.target.value),
+										onKeyDown: (event) => {
+											if (event.key === "Enter") runRegistry();
+										},
+										style: fieldStyle
+									}),
+									h(
+										"button",
+										{ type: "button", onClick: runRegistry, disabled: registry.phase === "loading", style: buttonStyle(false, registry.phase === "loading") },
+										registry.phase === "loading" ? t("loading") : t("add.registry.search")
+									)
+								),
+								registry.error === ""
+									? null
+									: h("div", { style: { fontSize: "12px", color: DANGER } }, registry.error),
+								registry.rows.length === 0
+									? registry.phase === "ready"
+										? h("div", { style: { fontSize: "12px", color: FAINT } }, t("add.registry.empty"))
+										: null
+									: h(
+											"div",
+											{ style: { display: "flex", flexDirection: "column", gap: "2px", maxHeight: "240px", overflowY: "auto" } },
+											...registry.rows.map((row) =>
+												h(
+													"div",
+													{
+														key: row.id,
+														style: { display: "flex", alignItems: "center", gap: "10px", padding: "7px 8px", borderRadius: "8px", background: ROW_HOVER }
+													},
+													h(
+														"span",
+														{ style: { display: "flex", flexDirection: "column", gap: "1px", minWidth: "0", flex: "1 1 auto" } },
+														h("span", { style: { fontSize: "13px", fontWeight: 600 } }, `/${row.name}`),
+														h("span", { style: { fontSize: "11px", color: FAINT } }, `${row.source} · ${t("add.installs", { count: row.installs })}`)
+													),
+													h(
+														"button",
+														{
+															type: "button",
+															disabled: addState.phase === "busy",
+															onClick: () => runInstall(row.source, undefined),
+															style: buttonStyle(true, addState.phase === "busy")
+														},
+														t("add.submit")
+													)
+												)
+											)
+										)
+							)
+						)
+					: h(
+							"label",
+							{ style: { display: "flex", flexDirection: "column", gap: "6px", fontSize: "12px", color: MUTED, flex: "1 1 auto", minHeight: "0" } },
+							t("add.paste.label"),
+							h("textarea", {
+								value: pasteText,
+								placeholder: t("add.paste.placeholder"),
+								onChange: (event) => setPasteText(event.target.value),
+								style: { ...fieldStyle, minHeight: "260px", resize: "vertical", fontFamily: "var(--ds-font-family-code, ui-monospace, monospace)", lineHeight: "18px" }
+							}),
+							h(
+								"div",
+								{ style: { display: "flex", gap: "8px", alignItems: "center", justifyContent: "flex-end" } },
+								h("label", { style: { display: "flex", alignItems: "center", gap: "8px", marginRight: "auto" } },
+									h("input", { type: "checkbox", checked: addOverwrite, onChange: (event) => setAddOverwrite(event.target.checked) }),
+									t("add.overwrite")
+								),
+								h(
+									"button",
+									{
+										type: "button",
+										onClick: () => runInstall(undefined, pasteText),
+										disabled: addState.phase === "busy" || pasteText.trim() === "",
+										style: buttonStyle(true, addState.phase === "busy" || pasteText.trim() === "")
+									},
+									addState.phase === "busy" ? t("add.installing") : t("add.submit")
+								)
+							)
+						),
+				addState.message === "" ? null : h("div", { style: { fontSize: "12px", color: OK } }, addState.message),
+				addState.error === "" ? null : h("div", { style: { fontSize: "12px", color: DANGER, whiteSpace: "pre-wrap", wordBreak: "break-word" } }, `${t("add.fail")}：${addState.error}`)
+			);
+
+			const panel = ReactDOM.createPortal(
+				h(
+					"div",
+					{
+						ref: panelRef,
+						role: "dialog",
+						"aria-modal": true,
+						"aria-label": t("panel.title"),
+						style: {
+							position: "fixed",
+							left: "50%",
+							top: "50%",
+							transform: "translate(-50%, -50%)",
+							width: "min(920px, 94vw)",
+							height: "min(720px, 86vh)",
+							display: "flex",
+							flexDirection: "column",
+							background: PANEL_BG,
+							color: LABEL,
+							border: `1px solid ${BORDER}`,
+							borderRadius: "16px",
+							boxShadow: SHADOW,
+							overflow: "hidden",
+							zIndex: 2147483000,
+							fontSize: "13px",
+							lineHeight: "20px",
+							fontFamily: "inherit",
+							opacity: 1
+						}
+					},
+					h(
+						"div",
+						{ style: { display: "flex", alignItems: "center", gap: "12px", padding: "12px 16px", borderBottom: `1px solid ${BORDER}`, flex: "none" } },
+						h("span", { style: { fontSize: "15px", fontWeight: 600 } }, t("panel.title")),
+						h("div", { role: "tablist", style: { display: "flex", gap: "4px" } }, [
+							tabButton("catalog", t("tab.catalog")),
+							tabButton("installed", t("tab.installed")),
+							tabButton("add", t("tab.add"))
+						]),
+						h("span", { style: { flex: "1 1 auto" } }),
+						tab === "add"
+							? null
+							: h(
+									"button",
+									{
+										type: "button",
+										onClick: () => {
+											setMulti((current) => !current);
+											setPicked([]);
+										},
+										style: {
+											padding: "4px 10px",
+											borderRadius: "999px",
+											border: `1px solid ${multi ? ACCENT : BORDER}`,
+											background: multi ? ACCENT : "transparent",
+											color: multi ? "#fff" : MUTED,
+											font: "inherit",
+											fontSize: "11px",
+											cursor: "pointer"
+										}
+									},
+									multi ? t("multi.on") : t("multi.off")
+								),
+						h(
+							"button",
+							{
+								type: "button",
+								"aria-label": t("panel.close"),
+								onClick: close,
+								style: { width: "28px", height: "28px", borderRadius: "8px", border: `1px solid ${BORDER}`, background: "transparent", color: MUTED, cursor: "pointer", fontSize: "15px", lineHeight: "1" }
+							},
+							"×"
+						)
+					),
+					tab === "add"
+						? null
+						: h(
+								"div",
+								{ style: { padding: "10px 16px", borderBottom: `1px solid ${BORDER}`, display: "flex", gap: "10px", alignItems: "center", flex: "none" } },
+								h("input", {
+									ref: searchRef,
+									type: "text",
+									value: query,
+									placeholder: t("search.placeholder"),
+									"aria-label": t("search.placeholder"),
+									onChange: (event) => setQuery(event.target.value),
+									onKeyDown: onListKeyDown,
+									style: { ...fieldStyle, flex: "1 1 auto" }
+								}),
+								h("span", { style: { fontSize: "11px", color: FAINT, flex: "none" } }, t("search.count", { count: model.flat.length }))
+							),
+					tab === "add" ? addSection : listSection,
+					h(
+						"div",
+						{
+							style: {
+								display: "flex",
+								alignItems: "center",
+								gap: "10px",
+								padding: "10px 16px",
+								borderTop: `1px solid ${BORDER}`,
+								flex: "none",
+								background: RAIL_BG
+							}
+						},
+						h(
+							"span",
+							{ style: { fontSize: "12px", color: MUTED, flex: "1 1 auto", minWidth: "0" } },
+							tab === "add"
+								? installed.root === "" ? "" : `${t("installed.root")}：${installed.root}`
+								: multi ? t("tip.multi", { count: picked.length }) : t("tip.single")
+						),
+						multi && tab !== "add"
+							? h(
+									"span",
+									{ style: { display: "inline-flex", gap: "8px", flex: "none" } },
+									h(
+										"button",
+										{
+											type: "button",
+											onClick: () => {
+												setPicked([]);
+												close();
+											},
+											style: buttonStyle(false, false)
+										},
+										t("cancel")
+									),
+									h(
+										"button",
+										{ type: "button", disabled: picked.length === 0, onClick: () => commit(picked), style: buttonStyle(true, picked.length === 0) },
+										`${t("insert")}${picked.length === 0 ? "" : ` ${picked.length}`}`
+									)
+								)
+							: null
+					)
+				),
+				document.body
+			);
+
+			return h(
+				React.Fragment,
+				null,
+				h(
+					"button",
+					{
+						ref: buttonRef,
+						type: "button",
+						"aria-haspopup": "dialog",
+						"aria-expanded": true,
+						"aria-label": t("button.tooltip"),
+						title: t("button.tooltip"),
+						onClick: openPanel,
+						onMouseDown: (event) => event.preventDefault(),
+						style: {
+							display: "inline-flex",
+							alignItems: "center",
+							gap: "5px",
+							padding: "4px 9px",
+							borderRadius: "8px",
+							border: `1px solid ${ACCENT}`,
+							background: ROW_ACTIVE,
+							color: LABEL,
+							font: "inherit",
+							fontSize: "12px",
+							lineHeight: "18px",
+							fontWeight: 500,
+							cursor: "pointer",
+							whiteSpace: "nowrap"
+						}
+					},
+					h(SkillIcon, { size: 13 }),
+					h("span", null, t("button.label"))
 				),
 				panel
 			);
 		}
 
 		/**
-		 * Client plugin body: register the composer control that inserts skills.
+		 * Client plugin body: register the composer control.
 		 * @param ctx - client root context.
 		 */
 		function apply(ctx) {
@@ -848,13 +1223,6 @@ window.__ModuleLoader__.load({
 				"skill-picker: dictionaries"
 			);
 
-			/**
-			 * Resolve the skills remote lazily. Injecting `remote.skills` as a hard
-			 * dependency would disable the whole trigger whenever that one service is
-			 * absent or not yet registered; the picker must still render its built-in
-			 * list in that case, so the dependency is probed per call instead.
-			 * @returns the remote's `skills` face, or undefined when unavailable.
-			 */
 			const skillRemote = () => {
 				const direct = ctx.get("remote.skills");
 				if (direct !== undefined) return direct;
@@ -863,7 +1231,7 @@ window.__ModuleLoader__.load({
 				try {
 					if (ctx.remote !== undefined && ctx.remote !== null && ctx.remote.skills !== undefined) return ctx.remote.skills;
 				} catch {
-					/* an unresolvable injection path is the absence case, not an error */
+					/* absence, not an error */
 				}
 				return undefined;
 			};
@@ -880,19 +1248,11 @@ window.__ModuleLoader__.load({
 								if (sessionId === undefined) return [];
 								const remote = skillRemote();
 								if (remote === undefined) throw new Error("skills remote unavailable");
-								/* The host resolves the catalog from the session's live Agent
-								   (or its preset). A bare RPC without a retained reference can
-								   answer with an empty list, so retain first — exactly how the
-								   official slash-command source does it. */
 								const sessions = ctx.get("sessions");
 								const query = async () => {
 									const result = await remote.list({ sessionId }, signal);
 									if (result === undefined || result.ok !== true) {
-										const detail =
-											result === undefined
-												? "no response"
-												: result.error.code + ": " + result.error.message;
-										throw new Error(detail);
+										throw new Error(result === undefined ? "no response" : `${result.error.code}: ${result.error.message}`);
 									}
 									return result.value.skills;
 								};
